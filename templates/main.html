@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/main.css') }}">
+{% endblock %}
+
+{% block title %}Korisnička tabla{% endblock %}
+{% block page_title %}Korisnička tabla{% endblock %}
+{% block main %}
+    <div class="card-grid">
+        <a href="{{ url_for('main.make_project') }}" class="card card-left">
+            <img src="{{ url_for('static', filename='Images/project.png') }}" alt="Projekat" class="card-icon">
+            <p class="card-text">Imam ideju za projekat</p>
+        </a>
+        <a href="{{ url_for('main.projects') }}" class="card card-right">
+            <img src="{{ url_for('static', filename='Images/help.png') }}" alt="Volonter" class="card-icon white-icon">
+            <p class="card-text">Želim da pomognem na projektu</p>
+        </a>
+    </div>
+
+    <input type="button" class="logout-button" value="Odjavi se" onclick="location.href='/logout'">
+{% endblock %}

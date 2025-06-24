@@ -1,0 +1,163 @@
+:root {
+    --cream: #fdf3dd;
+    --sky: #d6e8f7;
+    --wine: #caaacd;
+    --potato: #ef601e;
+    --wood: #cb962e;
+    --black: #000;
+    --camel: #ffda8a;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--camel);
+    color: var(--black);
+    font-family: "Rammetto One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Glavni sadržaj stranice */
+main {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Forma */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Labela sa inputima */
+label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 75vw;
+    max-width: 400px;
+}
+
+/* Polja za unos */
+.login-input,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="number"] {
+    font-family: "Rammetto One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    color: var(--cream);
+    background-color: var(--wine);
+    border-radius: 25px;
+    border: none;
+}
+
+/* Dugmad */
+.login-button,
+input[type="submit"],
+input[type="button"] {
+    font-family: "Rammetto One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    width: 50%;
+    max-width: 200px;
+    padding: 0.5rem;
+    border-radius: 2rem;
+    border: none;
+    color: var(--wine);
+    background-color: var(--sky);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover efekat za dugmad */
+.login-button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background-color: var(--wine);
+    color: var(--cream);
+}
+
+.main-container {
+    background-color: var(--cream);
+    border: 2px solid #d3a9d3;
+    border-radius: 20px;
+    width: 90%;
+    height: 85vh;
+    margin: 2vh auto;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* ✅ Dodaj ovo */
+    box-shadow: 0 0 16px #000;
+    padding-bottom: 2rem;
+}
+
+.main-header {
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;   /* ✅ Sticky */
+    top: 0;             /* ✅ Zalepi za vrh */
+    z-index: 10;        /* ✅ Nad ostalim sadržajem */
+    background-color: rgba(254,242,221,0.6);
+}
+
+
+
+.page-title {
+    color: #c49cc4;
+    font-size: 2rem;
+    font-family: 'Pattaya', sans-serif;
+    text-align: left;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+    /* uklonjen margin-right */
+}
+
+.nav-btn {
+    background-color: #d3a9d3;
+    border-radius: 50%;
+    border-color: #fff;
+    width: 36px;
+    height: 36px;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: #b98cb9;
+}

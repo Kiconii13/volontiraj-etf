@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/base.css') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Norican&family=Pattaya&family=Rammetto+One&family=Tagesschrift&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/index.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/responsive.css') }}" />
+    <title>Volontiraj - ETF</title>
+</head>
+<body>
+    <main class="main-container">
+        <h1 class="main-title">Volontiraj - ETF</h1>
+        <div class="main-content">
+            <form id="auth-form" method="POST" action="{{ url_for('auth.login') }}">
+                <label><span class="login-label" hidden>Korisničko ime:</span>
+                    <input type="text" name="username" placeholder="Korisničko ime" class="login-input" autofocus />
+                </label>
+                <label><span class="login-label" hidden>Lozinka:</span>
+                    <input type="password" name="password" placeholder="Lozinka" class="login-input" />
+                </label>
+                <input type="submit" value="Prijavi se" class="login-button" />
+                <input type="button" value="Registruj se" class="login-button" onClick="window.location.href='/register'" />
+            </form>
+        </div>
+    </main>
+
+    <div class="alerts">
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p class="alert alert-{{ category }}">{{ category }}: {{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

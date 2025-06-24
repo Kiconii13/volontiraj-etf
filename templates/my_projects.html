@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css') }}">
+{% endblock %}
+
+{% block title %}Moji projekti{% endblock %}
+{% block page_title %}Moji projekti{% endblock %}
+
+{% block main %}
+    <div class="project-grid">
+        {% for project in projects %}
+            <div class="project-card {% if not project.approved %}unapproved{% endif %}"
+                 data-name="{{ project.name }}"
+                 data-description="{{ project.description }}"
+                 data-volunteers="{% for v in project.volunteers %}{{ v.user.id }}::{{ v.user.name }}::{{ v.user.phone }}{% if not loop.last %}, {% endif %}{% endfor %}"
+                 onclick="openModal(this)">
+                <div class="card-body">
+                    <h2 class="card-title">{{ project.name }}</h2>
+                    <p class="people">
+                        {{ project.volunteers | length }}/{{ project.number_required }}
+                        <img src="{{ url_for('static', filename='Images/user.png') }}">
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <div id="modal-description"></div>
+            <div id="modal-volunteers"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+function openModal(element) {
+    const name = element.dataset.name;
+    const description = element.dataset.description;
+    const volunteers = element.dataset.volunteers;
+
+    document.getElementById("modal-title").textContent = name;
+    document.getElementById("modal-description").textContent = description;
+
+    const modalVolunteers = document.getElementById("modal-volunteers");
+
+    if (volunteers && volunteers.trim().length > 0) {
+        const listItems = volunteers.split(',').map(v => {
+            const [id, name, phone] = v.trim().split("::");
+            return `<li><a href="/user/${id}">${name} (${phone})</a></li><hr/>`;
+        }).join('');
+        modalVolunteers.innerHTML = `<h4>Prijavljeni volonteri:</h4><ul>${listItems}</ul>`;
+    } else {
+        modalVolunteers.innerHTML = "<h4>Prijavljeni volonteri:</h4><p>Još uvek nema volontera.</p>";
+    }
+
+    document.getElementById("project-modal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("project-modal").style.display = "none";
+}
+
+window.addEventListener("click", function(event) {
+    const modal = document.getElementById("project-modal");
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+</script>
+{% endblock %}

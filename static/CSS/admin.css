@@ -1,0 +1,20 @@
+.approved {
+    border: 2px solid green;
+    background-color: var(--camel);
+    opacity: 0.8;
+}
+
+.modal-button {
+    background-color: var(--sky);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.modal-button:hover {
+    background-color: var(--cream);
+}

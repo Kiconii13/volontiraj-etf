@@ -1,0 +1,26 @@
+.user-profile-grid {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.user-info-card {
+    background-color: var(--cream);
+    border-radius: 20px;
+    padding: 2rem 3rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+.user-info-card h2 {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    color: var(--wood);
+}
+
+.user-info-card p {
+    margin: 0.5rem 0;
+    font-size: 1.05rem;
+    color: var(--olive);
+}
