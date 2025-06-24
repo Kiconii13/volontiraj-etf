@@ -6,6 +6,6 @@ class Config:
         SECRET_KEY = os.environ.get("SECRET_KEY")
     else:
         SQLALCHEMY_DATABASE_URI = "sqlite:///db.db"
-        SECRET_KEY = "8PvUV36JVw59"
+        SECRET_KEY = "vUV3s@N3VeRY5JhQTi"
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
