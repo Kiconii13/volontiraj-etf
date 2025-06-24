@@ -2,7 +2,7 @@ import os
 
 class Config:
     if os.environ.get("FLASK_ENV") == "deployment":
-        SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+        SQLALCHEMY_DATABASE_URI = os.environ.get("NEW_DATABASE_URL")
         SECRET_KEY = os.environ.get("SECRET_KEY")
     else:
         SQLALCHEMY_DATABASE_URI = "sqlite:///db.db"
