@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
+{% endblock %}
+
+{% block title %}Korisnik - {{ user.username }}{% endblock %}
+{% block page_title %}Profil korisnika: {{ user.name }}{% endblock %}
+
+{% block main %}
+<div class="user-profile-grid">
+    <div class="user-info-card">
+        <h2>{{ user.name }}</h2>
+        <p><strong>Korisničko ime:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Telefon:</strong> {{ user.phone }}</p>
+        <p><strong>Telegram:</strong> {{ user.telegram or 'Nema podatka' }}</p>
+        <p><strong>Uloga:</strong> {{ user.role }}</p>
+        <p><strong>Član od:</strong> {{ user.created_at.strftime('%d.%m.%Y.') }}</p>
+    </div>
+</div>
+{% endblock %}

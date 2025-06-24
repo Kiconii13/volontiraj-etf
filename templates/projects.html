@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css') }}">
+{% endblock %}
+
+{% block title %}Aktivni projekti{% endblock %}
+{% block page_title %}Aktivni projekti{% endblock %}
+
+{% block main %}
+    <div class="project-grid">
+        {% for project in projects %}
+            <div class="project-card"
+                 data-id="{{ project.id }}"
+                 data-name="{{ project.name }}"
+                 data-description="{{ project.description }}"
+                 data-owner="{{ project.owner.username }}"
+                 onclick="openModal(this)">
+                <div class="card-body">
+                    <h2 class="card-title">{{ project.name }}</h2>
+                <p class="people">
+                    {{ project.volunteers | length }}/{{ project.number_required }}
+                    <img src="{{ url_for('static', filename='Images/user.png') }}">
+                </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <h3 id="modal-owner"></h3>
+            <div id="modal-description"></div>
+            <div id="modal-buttons">
+                <button id="modal-button" class="modal-button" onclick="apply()"></button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    let selectedProjectId = null;
+
+    function openModal(element) {
+    const name = element.dataset.name;
+    const description = element.dataset.description;
+    const owner = element.dataset.owner;
+
+    selectedProjectId = element.dataset.id;
+    document.getElementById("modal-button").textContent = "Prijavi se";
+
+    document.getElementById("modal-title").textContent = name;
+    document.getElementById("modal-description").textContent = description;
+    document.getElementById("modal-owner").textContent = owner;
+
+    document.getElementById("project-modal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("project-modal").style.display = "none";
+}
+
+// Zatvaranje ako klikneš van sadržaja
+window.addEventListener("click", function(event) {
+    const modal = document.getElementById("project-modal");
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+function apply() {
+    if (!selectedProjectId) return;
+
+    fetch(`/apply/${selectedProjectId}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message); // ili prikaži u modalu
+        closeModal();
+    })
+    .catch(error => {
+        alert("Greška prilikom prijave.");
+        console.error(error);
+    });
+}
+
+</script>
+{% endblock %}

@@ -1,0 +1,154 @@
+/* ------------------- */
+/* 📺 VELIKI EKRANI: preko 1440px (TV, widescreen) */
+@media (min-width: 1440px) {
+    body {
+        font-size: 1.5rem;
+    }
+
+    input{
+        font-size: 1rem;
+    }
+
+    .main-container {
+        max-width: 1400px;
+        height: 80vh;
+    }
+
+    .page-title {
+        font-size: 3rem;
+    }
+
+    .login-button {
+        max-width: 300px;
+    }
+}
+
+@media(max-width: 980px){
+    body{
+        font-size: 2rem;
+    }
+
+    .main-header{
+        margin-bottom: 4rem;
+    }
+
+    .page-title{
+        font-size: 5rem;
+    }
+
+    .nav-btn {
+        width: 6rem;
+        height: 6rem;
+        font-size: 3rem;
+    }
+
+    label{
+        font-size: 2rem;
+        max-width: 80vw;
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+
+    input[type="text"], input[type="number"], input[type="submit"], input[type="password"], input[type="button"], input[type="tel"], input[type="email"]{
+        font-size: 3rem;
+    }
+
+    input[type="submit"], input[type="button"]{
+        max-width: 500px;
+        padding: 0.5rem 1rem;
+        width: 75%;
+    }
+
+    .project-grid{
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    }
+
+    .card-title{
+        font-size: 3rem;
+    }
+
+    .people{
+        font-size: 2rem;
+    }
+
+    .people img{
+        width: 2rem;
+    }
+}
+
+/*modals*/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.modal-content {
+    background-color: var(--cream, #fff);
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal .close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media (max-width: 980px) {
+    .modal-content {
+        padding: 1.5rem;
+        max-width: 95%;
+        font-size: 4rem;
+    }
+
+    .modal .close {
+        top: 0.8rem;
+        right: 1rem;
+        font-size: 3rem;
+    }
+
+    .modal-button {
+        width: 100%;
+        margin-top: 0.5rem;
+        font-size: 4rem;
+    }
+
+    .modal-content h2,
+    .modal-content h3 {
+        font-size: 5rem;
+    }
+
+    .modal-content div,
+    .modal-content ul {
+        font-size: 4rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/base.css') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Norican&family=Pattaya&family=Rammetto+One&family=Tagesschrift&display=swap" rel="stylesheet">
+    {% block style %}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/responsive.css') }}" />
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <main class="main-container">
+    <div class="main-header">
+        <h1 class="page-title">{% block page_title %}{% endblock %}</h1>
+        <div class="nav-buttons">
+            {% if current_user.role == 'admin' %}<button class="nav-btn" onclick="location.href='{{ url_for('admin.admin') }}'">⚙️</button>{% endif %}
+            {% if current_user.is_authenticated and current_user.projects|length > 0 %}
+                <button class="nav-btn" onclick="location.href='{{ url_for('main.my_projects') }}'">⚒️</button>
+            {% endif %}
+            <button class="nav-btn" onclick="location.href='{{ url_for('main.main') }}'">🏠</button>
+            <button class="nav-btn" onclick="history.back()">⬅️</button>
+        </div>
+    </div>
+        <div class="main-content">
+            {% block main %}{% endblock %}
+        </div>
+    </main>
+
+    <div class="alerts">
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p class="alert alert-{{ category }}">{{ category }}: {{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    {% block script %}{% endblock %}
+</body>
+</html>

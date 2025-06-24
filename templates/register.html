@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block style %}
+{% endblock %}
+
+{% block title %}Registruj se{% endblock %}
+{% block page_title %}Registruj se{% endblock %}
+
+{% block main %}
+    <form method="POST" action="">
+        <label><span class="login-label">Korisničko ime:</span>
+            <input type="text" name="username" placeholder="Korisničko ime" class="login-input" autofocus required />
+        </label>
+        <label><span class="login-label">Lozinka:</span>
+            <input type="password" name="password" placeholder="Lozinka" class="login-input" required/>
+        </label>
+        <label><span class="login-label">Ime i prezime:</span>
+            <input type="text" name="name" placeholder="Ime i prezime" class="login-input" required />
+        </label>
+        <label><span class="login-label">Broj telefona:</span>
+            <input type="tel" name="phone" placeholder="Telefon" class="login-input" required/>
+            </label>
+        <label><span class="login-label">Email:</span>
+            <input type="email" name="email" placeholder="Email" class="login-input" required/>
+            </label>
+        <label><span class="login-label">Telegram username:</span>
+            <input type="text" name="telegram" placeholder="Telegram username (opciono)" class="login-input" />
+        </label>
+        <input type="submit" value="Registruj se" class="login-button"/>
+    </form>
+{% endblock %}
